@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="en-us" http-equiv="Content-Language" />
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:8000/bootProfile/css/bootProfile.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="http://localhost:8000/bootProfile/js/logic.js"></script>
+	<script type="text/javascript" src="http://localhost:8000/bootProfile/js/login.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		setHiddenFields();
+	});
+	</script>
+</head>
+<body>
+	<div class="webmain">
+	<div class="bP_bootProfile_index bP_bootProfile_team">
+		<div class="bP_bootProfile_H1"><h1>bootProfile</h1></div>
+		<div class="bP_bootProfile_Login">
+		<input class="loginUser" type="text" placeholder="username"/>
+		<input class="loginPassword" type="password" placeholder="password"/>
+		<button class="loginBtn"> Sign-In </button>
+		</div>
+	</div>
+	<div class="bP_searchBar_holder bP_team_searchBar_holder">
+		<input type="search" class="search" name="search" placeholder="Enter Player/Team "/>
+		<button class="searchBtn" onclick="generateSearchURL();">Search</button>
+	</div>
+	<div class="stopFloat"></div>
+	<div id="bP_teamProfile_header">
+	</div>
+	<div class="newPlayerForm">
+    <form action="phpScripts/newPlayerProfile.php" method="post" >
+	<div><h2>Create Player Profile</h2></div>
+	<div id="hiddenField"></div>
+	<hr/>
+	<Label>Player name</Label><br />
+	<input type="text" id="forename" name="forename" placeholder="Enter forename"/>
+	<input type="text" id="surname" name="surname" placeholder="Enter Surname"/>
+	<hr/>
+	<Label>Position</Label><br />
+	<select id="position" name="position">
+	<option value="ST">Striker</option>
+	<option value="FW">Forward</option>
+	<option value="AM">Attacking Midfielder</option>
+	<option value="CM">Central Midfielder</option>
+	<option value="DM">Defensive Midfielder</option>
+	<option value="GK">Goalie</option>
+	</select>
+	<hr/>
+	<input type="submit" value="Submit new Player"/>
+	<input type="reset" value="Clear"/>
+	</form>
+	</div>
+	<hr />
+	<div class="bP_footer_holder">
+	<div class="bP_navigation_holder bP_EditTeam_holder">
+	<a href="Index.html">Home</a>&nbsp;|&nbsp;<a href="about.html">About</a>&nbsp;|&nbsp;<a href="contactus.html">Contact-Us</a>
+	</div>
+	</div>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,637 @@
+html body{
+background-image:url('http://localhost:8000/bootProfile/background/background.jpg');
+background-repeat:no-repeat;
+background-size: 100% 1200px;
+}
+.webmain{
+	width: 1500px ;
+	margin-left: auto ;
+	margin-right: auto ;
+	margin-top:10px;
+}
+.bP_bootProfile_index{
+text-align:center;
+background:black;
+color:white;
+padding:2em 3em;
+height:100px;
+}
+.bP_bootProfile_Login{
+float:right;
+padding-top:2em;
+padding-right:1em;
+}
+.bP_bootProfile_Login Input{
+background-color:yellow;
+color:red;
+}
+.bP_bootProfile_H1{
+float:left;
+}
+.bP_searchBar_holder{
+text-align:center;
+padding:2em 0;
+}
+
+.bP_team_container ,
+.bP_league_container ,
+.bP_division_container{
+text-align:center;
+float:left;
+border: 2px solid black;
+width:220px;
+height:200px;
+margin:2px 2px;
+}
+
+.divImage{
+width:100%;
+height:150px;
+}
+.divName {
+background-color:black;
+color:red;
+text-align:center;
+padding-top:1em;
+opacity: 0.6;
+filter: alpha(opacity=60);
+width:100%;
+height:50px;
+}
+.CusdivName {
+font-size:150%;
+}
+.headerImage{
+width:100%;
+height:100%;
+}
+.headerImageContainer{
+text-align:center;
+float:left;
+border: 2px solid black;
+width:15%;
+height:120px;
+margin:2px 0;
+}
+.search{
+background:yellow;
+}
+.headerTitleContainer{
+text-align:center;
+padding-top:3em;
+float:left;
+border: 2px solid black;
+width:70%;
+height:120px;
+margin:2px 0;
+}
+.stopFloat{
+clear:both;
+}
+.bP_bootProfile_team{
+width:50%;
+float:left;
+text-align:left;
+padding:0 .5em;
+height:70px;
+}
+.bP_team_searchBar_holder{
+width:50%;
+float:left;
+padding:1.5em;
+height:70px;
+background-color:black;
+}
+.bP_player_container{
+text-align:center;
+float:left;
+border: 2px solid black;
+width:200px;
+height:200px;
+margin:2px 2px;
+}
+.bP_contactUs input{
+margin:10px 0;
+}
+.bP_contactUs textarea{
+width: 75%; 
+height: 195px;
+}
+.bP_navigation_holder a{
+color:black;
+font-weight:bold;
+font-size:150%;
+}
+.bP_footer_holder{
+
+}
+#bP_leagueContent{
+	height:500px;
+    padding:15px;
+	overflow-y:scroll;
+}
+#bP_playerProfile_header{
+float:left;
+width:20%
+}
+#bP_playerProfile_content{
+float:left;
+width:60%
+}
+#bP_teamProfile_header{
+
+}
+
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+.tab-links:after {
+    display:block;
+    clear:both;
+    content:'';
+} 
+.tab-links li {
+    margin:0px 5px;
+    float:left;
+    list-style:none;
+} 
+.tab-links a {
+    padding:9px 15px;
+    display:inline-block;
+    border-radius:3px 3px 0px 0px;
+    background:#7FB5DA;
+    font-size:16px;
+    font-weight:600;
+    color:#4c4c4c;
+    transition:all linear 0.15s;
+} 
+.tab-links a:hover {
+    background:#a7cce5;
+    text-decoration:none;
+} 
+li.active a, li.active a:hover {
+    background:#eee;
+    color:#4c4c4c;
+}
+.tab-links{
+	margin-bottom:0px;
+}
+ 
+.tab_content{
+	height:600px;
+    padding:15px;
+    border-radius:3px;
+    box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+    background:#eee;
+	overflow:scroll;
+}
+ 
+.tab {
+    display:none;
+}
+ 
+.tab.active {
+    display:block;
+}
+#bP_SearchResults_holder{
+height:600px;
+overflow-y:scroll;
+}
+.aboutText{
+font-size:200%;
+font-weight:bold;
+}
+.styleRecords p{
+font-size:150%;
+font-weight:bold;
+color:red;
+}
+.bP_aboutUs{
+height:600px;
+overflow-y:scroll;
+}
+@media screen and (min-width: 20px) and (max-width:1500px) {
+html body{
+background-image:url('http://localhost:8000/bootProfile/background/background2.jpg');
+background-repeat:no-repeat;
+background-size: 100% 100%;
+}
+.webmain{
+	width: 100% ;
+	margin-left: auto ;
+	margin-right: auto ;
+	margin-top:10px;
+}
+.bP_bootProfile_index{
+text-align:center;
+background:black;
+color:white;
+padding:2em 3em;
+height:100px;
+}
+.bP_bootProfile_Login{
+padding-top:2em;
+padding-right:1em;
+}
+.bP_bootProfile_Login Input{
+background-color:yellow;
+color:red;
+}
+.bP_bootProfile_H1{
+float:left;
+}
+.bP_searchBar_holder{
+text-align:center;
+padding:2em 0;
+}
+
+.bP_team_container ,
+.bP_league_container ,
+.bP_division_container{
+text-align:center;
+float:left;
+border: 2px solid black;
+width:220px;
+height:200px;
+margin:2px 2px;
+}
+
+.divImage{
+width:100%;
+height:150px;
+}
+.divName {
+background-color:black;
+color:red;
+text-align:center;
+padding-top:1em;
+opacity: 0.6;
+filter: alpha(opacity=60);
+width:100%;
+height:50px;
+}
+.CusdivName {
+font-size:150%;
+}
+.headerImage{
+width:100%;
+height:100%;
+}
+.headerImageContainer{
+text-align:center;
+float:left;
+border: 2px solid black;
+width:15%;
+height:120px;
+margin:2px 0;
+display:none;
+}
+.search{
+background:yellow;
+}
+.headerTitleContainer{
+text-align:center;
+padding:0.5em 0;
+float:left;
+border: 2px solid black;
+width:100%;
+}
+.stopFloat{
+clear:both;
+}
+.bP_bootProfile_team{
+width:100%;
+float:left;
+text-align:left;
+padding:0 .5em;
+padding-top:0px;
+}
+.bP_team_searchBar_holder{
+width:100%;
+float:left;
+padding-top:0px;
+}
+.bP_player_container{
+text-align:center;
+float:left;
+border: 2px solid black;
+width:200px;
+height:200px;
+margin:2px 2px;
+}
+.bP_contactUs input{
+margin:10px 0;
+}
+.bP_contactUs textarea{
+width: 75%; 
+height: 195px;
+}
+.bP_navigation_holder a{
+color:black;
+font-weight:bold;
+font-size:150%;
+}
+.bP_footer_holder{
+
+}
+#bP_leagueContent{
+	height:400px;
+    padding:15px;
+	overflow-y:scroll;
+}
+#bP_playerProfile_header{
+float:left;
+width:20%
+}
+#bP_playerProfile_content{
+float:right;
+width:70%;
+padding:1em;
+}
+#bP_teamProfile_header{
+
+}
+
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+.tab-links:after {
+    display:block;
+    clear:both;
+    content:'';
+} 
+.tab-links li {
+    margin:0px 5px;
+    float:left;
+    list-style:none;
+} 
+.tab-links a {
+    padding:9px 15px;
+    display:inline-block;
+    border-radius:3px 3px 0px 0px;
+    background:#7FB5DA;
+    font-size:16px;
+    font-weight:600;
+    color:#4c4c4c;
+    transition:all linear 0.15s;
+} 
+.tab-links a:hover {
+    background:#a7cce5;
+    text-decoration:none;
+} 
+li.active a, li.active a:hover {
+    background:#eee;
+    color:#4c4c4c;
+}
+.tab-links{
+	margin-bottom:0px;
+}
+ 
+.tab_content{
+	height:500px;
+    padding:10px;
+    border-radius:3px;
+    box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+    background:#eee;
+	overflow:scroll;
+}
+ 
+.tab {
+    display:none;
+}
+ 
+.tab.active {
+    display:block;
+}
+#bP_SearchResults_holder{
+height:600px;
+overflow-y:scroll;
+}
+.aboutText{
+font-size:200%;
+font-weight:bold;
+}
+.styleRecords p{
+font-size:150%;
+font-weight:bold;
+color:red;
+}
+.bP_aboutUs{
+height:600px;
+overflow-y:scroll;
+}
+}
+@media screen and (min-width: 0px) and (max-width:700px) {
+html body{
+background-image:url('http://localhost:8000/bootProfile/background/background2.jpg');
+background-repeat:no-repeat;
+background-size: 100% 100%;
+}
+.webmain{
+	width: 100% ;
+	margin-left: auto ;
+	margin-right: auto ;
+	margin-top:10px;
+}
+.bP_bootProfile_index{
+text-align:center;
+background:black;
+color:white;
+padding:2em 3em;
+height:100px;
+}
+.bP_bootProfile_Login{
+padding-top:2em;
+padding-right:1em;
+display:none;
+}
+.bP_bootProfile_Login Input{
+background-color:yellow;
+color:red;
+}
+.bP_bootProfile_H1{
+float:left;
+}
+.bP_searchBar_holder{
+text-align:center;
+padding:2em 0;
+}
+
+.bP_team_container ,
+.bP_league_container ,
+.bP_division_container{
+text-align:center;
+float:left;
+border: 2px solid black;
+width:220px;
+height:200px;
+margin:2px 2px;
+}
+
+.divImage{
+width:100%;
+height:150px;
+}
+.divName {
+background-color:black;
+color:red;
+text-align:center;
+padding-top:1em;
+opacity: 0.6;
+filter: alpha(opacity=60);
+width:100%;
+height:50px;
+}
+.CusdivName {
+font-size:150%;
+}
+.headerImage{
+width:100%;
+height:100%;
+}
+.headerImageContainer{
+text-align:center;
+float:left;
+border: 2px solid black;
+width:15%;
+height:120px;
+margin:2px 0;
+display:none;
+}
+.search{
+background:yellow;
+}
+.headerTitleContainer{
+text-align:center;
+padding:0.5em 0;
+float:left;
+border: 2px solid black;
+width:100%;
+}
+.stopFloat{
+clear:both;
+}
+.bP_bootProfile_team{
+width:100%;
+float:left;
+text-align:left;
+padding:0 .5em;
+padding-top:0px;
+}
+.bP_team_searchBar_holder{
+width:100%;
+float:left;
+padding-top:0px;
+}
+.bP_player_container{
+text-align:center;
+float:left;
+border: 2px solid black;
+width:200px;
+height:200px;
+margin:2px 2px;
+}
+.bP_contactUs input{
+margin:10px 0;
+}
+.bP_contactUs textarea{
+width: 100%; 
+height: 195px;
+}
+.bP_navigation_holder a{
+color:black;
+font-weight:bold;
+font-size:150%;
+}
+.bP_footer_holder{
+
+}
+#bP_leagueContent{
+	height:400px;
+    padding:15px;
+	overflow-y:scroll;
+}
+#bP_playerProfile_header{
+float:left;
+width:30%;
+}
+#bP_playerProfile_content{
+float:left;
+width:100%;
+}
+#bP_teamProfile_header{
+
+}
+
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+.tab-links:after {
+    display:block;
+    clear:both;
+    content:'';
+} 
+.tab-links li {
+    margin:0px 5px;
+    float:left;
+    list-style:none;
+} 
+.tab-links a {
+    padding:9px 15px;
+    display:inline-block;
+    border-radius:3px 3px 0px 0px;
+    background:#7FB5DA;
+    font-size:16px;
+    font-weight:600;
+    color:#4c4c4c;
+    transition:all linear 0.15s;
+} 
+.tab-links a:hover {
+    background:#a7cce5;
+    text-decoration:none;
+} 
+li.active a, li.active a:hover {
+    background:#eee;
+    color:#4c4c4c;
+}
+.tab-links{
+	margin-bottom:0px;
+}
+ 
+.tab_content{
+	height:400px;
+    padding:10px;
+    border-radius:3px;
+    box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+    background:#eee;
+	overflow:scroll;
+}
+ 
+.tab {
+    display:none;
+}
+ 
+.tab.active {
+    display:block;
+}
+#bP_SearchResults_holder{
+height:600px;
+overflow-y:scroll;
+}
+.aboutText{
+font-size:200%;
+font-weight:bold;
+}
+.styleRecords p{
+font-size:150%;
+font-weight:bold;
+color:red;
+}
+.bP_aboutUs{
+height:600px;
+overflow-y:scroll;
+}
+}

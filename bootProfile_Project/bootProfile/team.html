@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta content="en-us" http-equiv="Content-Language" />
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:8000/bootProfile/css/bootProfile.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="http://localhost:8000/bootProfile/js/logic.js"></script>
+	<script type="text/javascript" src="http://localhost:8000/bootProfile/js/login.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		getTeamDetails();
+		tabbedBehaviour();
+	});
+	</script>
+</head>
+<body>
+	<div class="webmain">
+	<div class="bP_bootProfile_index bP_bootProfile_team">
+		<div class="bP_bootProfile_H1"><h1>bootProfile</h1></div>
+		<div class="bP_bootProfile_Login">
+		<input class="loginUser" type="text" placeholder="username"/>
+		<input class="loginPassword" type="password" placeholder="password"/>
+		<button class="loginBtn"> Sign-In </button>
+		</div>
+	</div>
+	<div class="bP_searchBar_holder bP_team_searchBar_holder">
+		<input type="search" class="search" name="search" placeholder="Enter Player/Team "/>
+		<button class="searchBtn" onclick="generateSearchURL();">Search</button>
+	</div>
+	<div class="stopFloat"></div>
+	<div id="bP_teamProfile_header">
+	</div>
+	<div class="tabs">
+    <ul class="tab-links">
+        <li class="active"><a href="#bP_teamPlayers_holder">Players</a></li>
+        <li><a href="#bP_teamProfile_holder">Team Wall</a></li>
+    </ul>
+    <div class="tab_content">
+        <div id="bP_teamPlayers_holder" class="tab active" ></div>
+		<div id="bP_teamProfile_holder" class="tab" ></div>
+    </div>
+	</div>
+	<hr />
+	<div class="bP_footer_holder">
+	<div class="bP_navigation_holder bP_EditTeam_holder">
+	<a href="Index.html">Home</a>&nbsp;|&nbsp;<a href="about.html">About</a>&nbsp;|&nbsp;<a href="contactus.html">Contact-Us</a>
+	</div>
+	</div>
+	</div>
+</body>
+</html>

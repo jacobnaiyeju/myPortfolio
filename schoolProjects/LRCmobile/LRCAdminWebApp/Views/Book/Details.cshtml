@@ -1,0 +1,36 @@
+﻿@model LRCAdminWebApp.LRCMobileServiceReference.BookClass
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.AccessionNumber)</th>
+        <th>@Html.DisplayNameFor(model => model.ISBN)</th>
+        <th>@Html.DisplayNameFor(model => model.ItemType)</th>
+        <th>@Html.DisplayNameFor(model => model.Author)</th>
+        <th>@Html.DisplayNameFor(model => model.Publisher)</th>
+        <th>@Html.DisplayNameFor(model => model.PublisherDate)</th>
+        <th>@Html.DisplayNameFor(model => model.Status)</th>
+        <th>@Html.DisplayNameFor(model => model.Title)</th>
+        <th>@Html.DisplayNameFor(model => model.Edition)</th>
+    </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.AccessionNumber)</td>
+            <td>@Html.DisplayFor(model => model.ISBN)</td>
+            <td>@Html.DisplayFor(model => model.ItemType)</td>
+            <td>@Html.DisplayFor(model => model.Author)</td>
+            <td>@Html.DisplayFor(model => model.Publisher)</td>
+            <td>@Html.DisplayFor(model => model.PublisherDate)</td>
+            <td>@Html.DisplayFor(model => model.Status)</td>
+            <td>@Html.DisplayFor(model => model.Title)</td>
+            <td>@Html.DisplayFor(model => model.Edition)</td>
+            
+        </tr>
+    <tfoot>
+        <tr><td>@Html.ActionLink("Go back to Listing","Index")</td></tr>
+    </tfoot>
+    
+</table>

@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "DeleteIconContent";
+    var addresspath = "http://localhost/LRCMobileService/";
+}
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="@Url.Content("http://localhost:61684/Scripts/jquery-1.10.2.js")"></script>
+    <script src="@Url.Content("http://localhost:61684/Content/custom/jquery.mobile-1.1.1.js")"></script>
+    <script src="@Url.Content("http://localhost:61684/Content/custom/mobile.js")"></script>
+</asp:Content>
+
+<h2>Mobile View</h2>
+<div style="float:left;width:500px">
+    <div style="border:3px solid black;padding:10px;width:500px;height:500px;overflow-y:auto">
+        <div>
+            <h3>Tap Icon to select Image and to ascribe text to it</h3>
+            <br /><br /><br />
+        </div>
+        <div>
+            <div id="mobileIcons">
+                @{
+                    var storeImage = ViewBag.imageEnd as List<LRCAdminWebApp.LRCMobileServiceReference.MobileIconContent>;
+                }
+
+                @for (var i = 0; i < (int)ViewBag.amount; i++)
+                {
+                    var filep = addresspath+"Icon" + storeImage[i].IconName;
+                    var buttonid = "comfirmId" + (i + 1);
+                    <button id="@buttonid" style="background-color: black; width:470px; height: 70px"><img src="@filep" alt="cannot display" height="60" width="70" /></button>
+                    <div style="border:3px solid black;background-color:aquamarine;width:100px;">
+                        @Html.ActionLink("delete", "deleteIconContent2", new { placeNumber = storeImage[i].placeInt })
+                    </div><br />
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+

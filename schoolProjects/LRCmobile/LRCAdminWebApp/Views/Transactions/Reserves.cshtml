@@ -1,0 +1,53 @@
+﻿@model IEnumerable<LRCAdminWebApp.LRCMobileServiceReference.ReservingClass>
+@{
+    ViewBag.Title = "Reserves";
+}
+<style>
+    table,
+    th,
+    td {
+        border: 2px solid black;
+    }
+
+    th {
+        background-color: red;
+    }
+
+    td {
+        background-color: yellow;
+    }
+</style>
+<h2>Faculty Reserves</h2>
+
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ItemAccessionNumber)</th>
+        <th>Description</th>
+        <th>@Html.DisplayNameFor(model => model.Date)</th>
+        <th>@Html.DisplayNameFor(model => model.ReleaseDate)</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(a => item.ItemAccessionNumber)</td>
+            @{
+
+        LRCAdminWebApp.LRCMobileServiceReference.LRCMobileServiceClient db
+            = new LRCAdminWebApp.LRCMobileServiceReference.LRCMobileServiceClient();
+        var start = db.findItemAsync(item.ItemAccessionNumber);
+        var result = start.Result.ItemType;
+
+            }
+            @Html.Action("processItemtype", new
+            {
+                itemType = result,
+                itemid = item.ItemAccessionNumber,
+                patronid = item.PatronPatronId
+            })
+            <td>@Html.DisplayFor(a => item.Date)</td>
+            <td>@Html.DisplayFor(a => item.ReleaseDate)</td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Go back to Listing", "Index", "Home")

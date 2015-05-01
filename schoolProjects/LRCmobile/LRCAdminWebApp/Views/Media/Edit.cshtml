@@ -1,0 +1,43 @@
+﻿@model LRCAdminWebApp.LRCMobileServiceReference.MediaClass
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Media</h2>
+
+@using (@Html.BeginForm("Edit", "Media", FormMethod.Post))
+{
+    @Html.HiddenFor(a=>a.AccessionNumber)
+    @Html.HiddenFor(a=>a.MediaId)
+    <div style="float:left;">
+        @Html.ValidationSummary(false)
+        @Html.LabelFor(model => model.Status)<br />
+        @foreach (var item in ViewBag.Status as LRCAdminWebApp.Controllers.MediaController.Status[])
+        {
+            var number = (int)item;
+            <input type="radio" name="Status" id="@item" value="@number.ToString()" />
+            <label for="@item">@item</label>
+        }
+    </div>
+    <div style="clear:both;"></div>
+    <hr />
+    <div style="float:left;width:350px;">
+        <div style="float:right;">
+            @Html.LabelFor(a => a.SKU)
+            @Html.EditorFor(a => a.SKU)
+        </div>
+        <div style="float:right;">
+            @Html.LabelFor(a => a.Title)
+            @Html.EditorFor(a => a.Title)
+        </div>
+        <div style="float:right;">
+            @Html.LabelFor(a => a.Format)
+            @Html.EditorFor(a => a.Format)
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+    <hr />
+    <input type="submit" value="Update" />
+}
+<hr />
+@Html.ActionLink("Go back to Listing", "Index")

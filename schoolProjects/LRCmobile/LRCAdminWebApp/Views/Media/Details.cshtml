@@ -1,0 +1,28 @@
+﻿@model LRCAdminWebApp.LRCMobileServiceReference.MediaClass
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.AccessionNumber)</th>
+        <th>@Html.DisplayNameFor(model => model.SKU)</th>
+        <th>@Html.DisplayNameFor(model => model.Title)</th>
+        <th>@Html.DisplayNameFor(model => model.Format)</th>
+        <th>@Html.DisplayNameFor(model => model.Status)</th>
+    </tr>
+ <tr>
+     <td>@Html.DisplayFor(a=>a.AccessionNumber)</td>
+     <td>@Html.DisplayFor(a => a.SKU)</td>
+     <td>@Html.DisplayFor(a => a.Title)</td>
+     <td>@Html.DisplayFor(a => a.Format)</td>
+     <td>@Html.DisplayFor(a => a.Status)</td>
+ </tr>
+    <tfoot>
+        <tr>
+            <td>@Html.ActionLink("Go back to Listing","Index")</td>
+        </tr>
+    </tfoot>
+</table>

@@ -1,0 +1,16 @@
+﻿@model LRCAdminWebApp.LRCMobileServiceReference.PatronClass
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Patron</h2>
+@using (@Html.BeginForm("Edit", "Patron", FormMethod.Post))
+{
+    @Html.ValidationSummary(false);
+    @Html.EditorForModel();
+    <hr />
+    <input type="submit" value="Update"/>
+}
+<hr />
+@Html.ActionLink("Back to Listing", "Index")
+

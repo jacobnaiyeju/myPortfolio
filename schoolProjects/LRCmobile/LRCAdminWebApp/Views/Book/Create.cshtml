@@ -1,0 +1,56 @@
+﻿@model LRCAdminWebApp.LRCMobileServiceReference.BookClass
+
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create New Book</h2>
+
+@using (@Html.BeginForm("Create", "Book", FormMethod.Post)) 
+{
+    <div style="float:left">
+        @Html.ValidationSummary(false)
+        @Html.LabelFor(model => model.Status)<br />
+        @foreach (var item in ViewBag.Status as LRCAdminWebApp.Controllers.BookController.Status[])
+        {
+        var number = (int)item;
+        <input type="radio" name="Status" id="@item" value="@number.ToString()" />
+        <label for="@item">@item</label>
+        }
+    </div>
+    <div style="clear:both;"></div>
+    <hr />
+    <div style="float:left;width:350px;">
+        <div style="float:right">
+            @Html.LabelFor(a => a.ISBN)
+            @Html.EditorFor(a => a.ISBN)
+        </div>
+        <div style="float:right">
+            @Html.LabelFor(a => a.Title)
+            @Html.EditorFor(a => a.Title)
+        </div>
+        <div style="float:right">
+            @Html.LabelFor(a => a.Publisher)
+            @Html.EditorFor(a => a.Publisher)
+        </div>
+        <div style="float:right">
+            <label for="PublisherDate">PublisherDate</label>
+            <input name="PublisherDate" id="PublisherDate" type="datetime" value="@DateTime.Now" />
+        </div>
+        <div style="float:right">
+            @Html.LabelFor(a => a.Author)
+            @Html.EditorFor(a => a.Author)
+        </div>
+        <div style="float:right">
+            @Html.LabelFor(a => a.Edition)
+            @Html.EditorFor(a => a.Edition)
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+    <hr />
+<input type="submit" value="Create"/>
+}
+<hr />
+@Html.ActionLink("Go back to Listing", "Index")
+

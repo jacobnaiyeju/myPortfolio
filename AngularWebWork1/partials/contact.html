@@ -1,0 +1,33 @@
+<div data-ng-controller="contactController">
+	<div class="container-fluid">
+	<google-map
+		center="centerProperty"
+		zoom="zoomProperty" 
+		markers="markersProperty"
+		latitude="clickedLatitudeProperty"
+		longitude="clickedLongitudeProperty"
+		mark-click="false"
+		draggable="true"
+		style="height: 450px; width: 100%">
+	</google-map>
+	</div>
+	<hr/>
+	<div class="row">
+	<div class="col-md-offset-4 col-md-4">
+	<address>
+		<b>You can find me at:</b><br/>
+		{{address}}
+		{{city}}, {{province}}<br/>
+		{{postalCode}}
+	</address>
+	<address>
+		<b>Email:</b><br/>
+		{{email}}
+	</address>
+	<address>
+		<b>Telephone No:</b><br/>
+		{{phone}}
+	</address>
+	</div>
+	</div>
+</div>

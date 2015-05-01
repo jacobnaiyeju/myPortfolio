@@ -1,0 +1,265 @@
+<!-- Created on JAN 19, 2015 by Jacob Naiyeju
+Modified on JAN 20, 2015 by Jacob Naiyeju
+
+Project Description
+Demonstrating a single page solution using angulalarJS-->
+
+<!Doctype html>
+<html lang ="en" data-ng-app="demo">
+	<head>
+		<title>Single page solution demo</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<style type="text/css">
+			.custsplash{
+				overflow:hidden;
+				min-height: 100%;
+			}
+			.custImage{
+				position: fixed;
+				top:0;
+				left:0;
+				z-index:-1;
+			}
+			.progress {
+				margin-top: 10%;
+			}
+			.angular-google-map {
+				display: block;
+			}
+		</style>	
+	</head>
+	<body>
+		<header data-ng-controller="navController">
+			<div class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand">{{websiteName}}</a>
+					</div>
+					<div>
+						<ul class="nav navbar-nav">
+							<li data-ng-repeat="x in navList"
+								data-ng-class="{'active':x == activeClass}"
+							>
+								<a data-ng-click="operation(x)" href="#{{x}}">{{x}}
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div id="main">
+		<div data-ng-view></div>
+		</div>
+	</body>
+	<footer>
+		<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.1/TweenMax.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-animate.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
+		<script src="https://code.createjs.com/createjs-2014.12.12.min.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+		<script src="http://www.directiv.es/application/html/js/nlaplante/angular-google-maps/angular-google-maps.js"></script>
+		<script>
+			var app=angular.module("demo",['ngRoute','appControllers','google-maps','ngAnimate','ui.bootstrap']);
+			app.config(['$routeProvider',function($routeProvider){
+				$routeProvider
+					.when('/Highlights',{
+						templateUrl:'partials/highlights.html',
+						controller:'highlightsController'
+					})
+					.when('/Resume',{
+						templateUrl:'partials/resume.html',
+						controller:'resumeController'
+					})
+					.when('/About',{
+						templateUrl:'partials/about.html',
+						controller:'aboutController'
+					})
+					.when('/Contact',{
+						templateUrl:'partials/contact.html',
+						controller:'contactController'
+					})
+					.when('/Default',{
+						templateUrl:'partials/default.html',
+						controller:'defaultController'
+					})
+					.otherwise({
+						redirectTo: '/Default'
+					});
+			}]);
+			app.animation('.slide-left-animation', function ($window) {
+				return {
+					enter: function (element, done) {
+						TweenMax.fromTo(element, 1, { left: $window.innerWidth}, {left: 0, onComplete: done});
+					},
+					leave: function (element, done) {
+						TweenMax.to(element, 1, {left: -$window.innerWidth, onComplete: done});
+					}
+				};
+			});
+			app.animation('.slide-down-animation', function ($window) {
+				return {
+					enter: function (element, done) {
+						TweenMax.fromTo(element, 1, { top: -$window.innerHeight}, {top: 0, onComplete: done});
+					},
+					leave: function (element, done) {
+						TweenMax.to(element, 1, {top: $window.innerHeight, onComplete: done});
+					}
+				};
+			});
+			app.animation('.fade-in-animation', function ($window) {
+				return {
+					enter: function (element, done) {
+						TweenMax.fromTo(element, 1, { opacity: 0}, {opacity: 1, onComplete: done});
+					},
+					leave: function (element, done) {
+						TweenMax.to(element, 1, {opacity: 0, onComplete: done});
+					}
+				};
+			});			
+			app.directive('bgImage', function ($window, $timeout) {
+				return function (scope, element, attrs) {
+					var resizeBG = function () {
+						var bgwidth = element.width();
+						var bgheight = element.height();
+						var winwidth = $window.innerWidth;
+						var winheight = $window.innerHeight;
+						var widthratio = winwidth / bgwidth;
+						var heightratio = winheight / bgheight;
+						var widthdiff = heightratio * bgwidth;
+						var heightdiff = widthratio * bgheight;
+						if (heightdiff > winheight) {
+							element.css({
+								width: winwidth + 'px',
+								height: heightdiff + 'px'
+							});
+						} else {
+							element.css({
+							width: widthdiff + 'px',
+							height: winheight + 'px'
+							});
+							}
+					};
+					var windowElement = angular.element($window);
+					windowElement.resize(resizeBG);
+					element.bind('load', function () {
+					resizeBG();
+					});
+				}
+			});
+			app.factory('QueueService', function($rootScope){
+				var queue = new createjs.LoadQueue(true);
+				function loadManifest(manifest) {
+					queue.loadManifest(manifest);
+					queue.on('progress', function(event) {
+						$rootScope.$broadcast('queueProgress', event);
+					});
+					queue.on('complete', function() {
+						$rootScope.$broadcast('queueComplete', manifest);
+					});
+				}
+				return {
+					loadManifest: loadManifest
+				}
+			});
+
+		</script>
+		<script>
+			var appControllers=angular.module("appControllers",[]);
+			appControllers.controller("navController",function($scope){
+				$scope.websiteName="myPorfolio";
+				$scope.navList=["Highlights","Resume","About","Contact"];
+				$scope.operation=function(x){
+					$scope.activeClass=x;			
+				};
+			});
+			appControllers.controller("defaultController",function($scope,$timeout,QueueService){
+				var INTERVAL = 3000,
+				slides = [{id:"image00", src:"./images/Desert.jpg"},
+				{id:"image01", src:"./images/Hydrangeas.jpg"},
+				{id:"image02", src:"./images/Tulips.jpg"}];
+
+				function setCurrentSlideIndex(index) {
+					$scope.currentIndex = index;
+				}
+				function isCurrentSlideIndex(index) {
+					return $scope.currentIndex === index;
+				}
+				function setCurrentAnimation(animation) {
+					$scope.currentAnimation = animation;
+				}
+				function isCurrentAnimation(animation) {
+					return $scope.currentAnimation === animation;
+				}
+				function nextSlide() {
+					$scope.currentIndex = ($scope.currentIndex < $scope.slides.length - 1) ? ++$scope.currentIndex : 0;
+					$timeout(nextSlide, INTERVAL);
+				}
+				function loadSlides() {
+					QueueService.loadManifest(slides);
+				}
+				$scope.$on('queueProgress', function(event, queueProgress) {
+					$scope.$apply(function(){
+					$scope.progress = queueProgress.progress * 100;
+					});
+				});
+				$scope.$on('queueComplete', function(event, slides) {
+					$scope.$apply(function(){
+						$scope.slides = slides;
+						$scope.loaded = true;
+
+						$timeout(nextSlide, INTERVAL);
+					});
+				});
+				$scope.progress = 0;
+				$scope.loaded = false;
+				$scope.currentIndex = 0;
+				$scope.currentAnimation = 'fade-in-animation';
+				$scope.setCurrentSlideIndex = setCurrentSlideIndex;
+				$scope.isCurrentSlideIndex = isCurrentSlideIndex;
+				$scope.setCurrentAnimation = setCurrentAnimation;
+				$scope.isCurrentAnimation = isCurrentAnimation;
+				loadSlides();
+			});
+			appControllers.controller("highlightsController",function($scope){
+				$scope.message="This is home page";
+			});
+			appControllers.controller("aboutController",function($scope){
+				$scope.message="This is about page";
+				$scope.name="Jacob Naiyeju";
+				$scope.DOB="Jan 06, 1989";
+				$scope.employedAt="Conestoga College";
+				$scope.role="Student";
+			});
+			appControllers.controller("contactController",function($scope){
+				$scope.address="42 Amherst Drive";
+				$scope.city="Kitchener";
+				$scope.province="Ontario";
+				$scope.postalCode="N2P1C9";
+				$scope.email="jacob.naiyeju@gmail.com";
+				$scope.phone="+012267894414";
+				angular.extend($scope, {
+					centerProperty: {
+						lat: 43.39217,
+						lng: -80.41316
+					},
+					zoomProperty: 14,
+					markersProperty: [ {
+						latitude: 43.39217,
+						longitude: -80.41316
+					}],
+					clickedLatitudeProperty: null,	
+					clickedLongitudeProperty: null,
+				});
+			});
+			appControllers.controller("resumeController",function($scope){
+				$scope.message="This is resume page";
+			});
+		</script>
+	</footer>
+</html>

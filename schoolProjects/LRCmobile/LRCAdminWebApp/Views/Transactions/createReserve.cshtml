@@ -1,0 +1,23 @@
+﻿@model LRCAdminWebApp.LRCMobileServiceReference.ReservingClass
+@{
+    ViewBag.Title = "Reserve Item";
+}
+
+<h2>Reserve Item</h2>
+
+@using (@Html.BeginForm())
+{
+    @Html.HiddenFor(a => a.ItemAccessionNumber)
+    @Html.LabelFor(a => a.PatronPatronId)
+    @Html.EditorFor(a => a.PatronPatronId)
+    <br /><br />
+    @Html.LabelFor(a => a.Date)
+    <input type="datetime" name="Date" id="Date" value="@DateTime.Now" readonly />
+    <br /><br />
+    @Html.LabelFor(a=>a.ReleaseDate)
+    <input type="datetime" name="ReleaseDate" id="ReleaseDate" value="@DateTime.Now.AddDays(3)"
+           min="@DateTime.Now.AddDays(3)" max="@DateTime.Now.AddDays(21)" />
+
+    <input type="submit" value="Reserve" />
+}
+@Html.ActionLink("Go back to Listing", "Index", "Home")

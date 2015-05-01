@@ -1,0 +1,24 @@
+﻿@model LRCAdminWebApp.LRCMobileServiceReference.AVEquipmentClass
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+@Html.ActionLink("Create new Book", "Create")
+
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.AccessionNumber)</th>
+        <th>@Html.DisplayNameFor(model => model.AssetNumber)</th>
+        <th>@Html.DisplayNameFor(model => model.Status)</th>
+    </tr>
+        <tr>
+            <td>@Html.DisplayFor(model=>model.AccessionNumber)</td>
+            <td>@Html.DisplayFor(model => model.AssetNumber)</td>
+            <td>@Html.DisplayFor(model => model.Status)</td>
+        </tr>
+    <tfoot>
+        <tr><td>@Html.ActionLink("Go to Listing","Index")</td></tr>
+    </tfoot>
+</table>
+

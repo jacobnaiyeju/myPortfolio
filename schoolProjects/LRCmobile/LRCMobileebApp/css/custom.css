@@ -1,0 +1,15 @@
+/*
+ * Custom CSS
+ */
+img { max-width: 100%; }
+
+.red { color : red; }
+
+label.error{
+	font-weight: bold;
+	color:red;
+	padding-bottom:3em;
+}
+label{
+	font-weight: bold;
+}

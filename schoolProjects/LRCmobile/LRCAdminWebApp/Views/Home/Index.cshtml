@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div style="padding:30px">
+    <div class="col-lg-6">
+        <h2>LRC Mobile</h2>
+        @using (@Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <input type="search" id="Search" name="Search" value="Enter Book Title" size="60" onfocus="$('#Search').val('')" />
+                    <input type="submit" value="Search" />
+            <br /><br />
+            <input type="radio" id="Book" name="category" value="Book" checked="checked" onclick="$('#Search').val('Enter Book Title')" />
+            <label for="Book">Book</label>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <input type="radio" id="Patron" name="category" value="Patron" onclick="$('#Search').val('Enter Patron LastName or FirstName')" />
+            <label for="Patron">Patron</label><br />
+            <input type="radio" id="Periodical" name="category" value="Periodical" onclick="$('#Search').val('Enter Periodical Title')" />
+            <label for="Periodical">Periodical</label><br />
+            <input type="radio" id="Media" name="category" value="Media" onclick="$('#Search').val('Enter Media Title')" />
+            <label for="Media">Media</label><br />
+            <input type="radio" id="AVEquipment" name="category" value="AVEquipment" onclick="$('#Search').val('Enter Asset Number')" />
+            <label for="AVEquipment">AVEquipment</label><br />
+}
+    </div>
+    <div class="col-lg-6" style="border-left-style:solid;border-left-color:red">
+        <h2>Administrative functions</h2>
+        <br /><br />
+        <ul>
+            <li>@Html.ActionLink("Manage Books", "Index", "Book")</li>
+            <li>@Html.ActionLink("Manage Periodicals", "Index", "Periodical")
+            <li>@Html.ActionLink("Manage Media", "Index", "Media")</li>
+            <li>@Html.ActionLink("Manage AVEquipment", "Index", "AVEquipment")</li>
+            <li>@Html.ActionLink("Manage Patrons", "Index", "Patron")</li>
+        </ul>
+
+    </div>
+    <div style="clear:both;padding-top:2em">
+        @using (@Html.BeginForm("checkInItem", "Transactions", FormMethod.Post))
+        {
+            <fieldset>
+                <legend>Check In Item</legend><br />
+                <label>Enter Accession Number</label>
+                @*<input type="number" id="accessionNumber" name="accessionNumber" />*@
+                <select name="accessionNumber" id="accessionNumber">
+                    @foreach (var item in ViewBag.checkInA)
+                    {
+                        <option style="color:red;font-weight:bold" value="@item">@item</option>
+                    }
+                </select>
+                <input type="submit" value="CheckIn" />
+            </fieldset><br />
+        }
+        @using (@Html.BeginForm("checkOutItem", "Transactions", FormMethod.Post))
+        {
+            <fieldset>
+                <legend>Check Out Item</legend><br />
+                <div style="color:red;font-weight:bold">
+                    @if (TempData["messageChk"] != null)
+                    {@TempData["messageChk"] }
+                </div>
+                <label>Enter Accession Number</label>
+                @*<input type="number" id="accessionNumber" name="accessionNumber" value="Enter Accession Number" />*@
+                <select name="accessionNumber" id="accessionNumber">
+                    @foreach (var item in ViewBag.itemsOnHold)
+                    {
+                        <option style="color:red;font-weight:bold" value="@item">@item</option>
+                    }
+                </select>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <label>Enter Patron Id</label>
+                @*<input type="number" id="patronId" name="patronId" />*@
+                <select name="patronId" id="patronId">
+                    @foreach (var item in ViewBag.patronThatHold)
+                    {
+                        <option style="color:red;font-weight:bold" value="@item">@item</option>
+                    }
+                </select>
+                <input type="submit" value="CheckOut" />
+            </fieldset>
+        }
+
+    </div>
+</div>

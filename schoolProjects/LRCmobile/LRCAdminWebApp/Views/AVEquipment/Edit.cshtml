@@ -1,0 +1,34 @@
+﻿@model LRCAdminWebApp.LRCMobileServiceReference.AVEquipmentClass
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update AV Equipment</h2>
+@using (@Html.BeginForm("Edit", "AVEquipment", FormMethod.Post))
+{
+    @Html.HiddenFor(a=>a.AccessionNumber)
+    @Html.HiddenFor(a=>a.AVEquipId)
+    <div style="float:left;">
+        @Html.ValidationSummary(false)
+        @Html.LabelFor(model => model.Status)<br />
+        @foreach (var item in ViewBag.Status as LRCAdminWebApp.Controllers.AVEquipmentController.Status[])
+        {
+        var number = (int)item;
+        <input type="radio" name="Status" id="@item" value="@number.ToString()" />
+        <label for="@item">@item</label>
+        }
+    </div>
+    <div style="clear:both;"></div>
+    <hr />
+    <div style="float:left;width:350px">
+        <div style="float:right;">
+            @Html.LabelFor(a => a.AssetNumber)
+            @Html.EditorFor(a => a.AssetNumber)
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+    <hr />
+    <input type="submit" value="Update" />
+}
+<hr />
+@Html.ActionLink("Go back to Listing","Index")

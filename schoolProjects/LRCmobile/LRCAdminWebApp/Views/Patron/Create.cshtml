@@ -1,0 +1,62 @@
+﻿@model LRCAdminWebApp.LRCMobileServiceReference.PatronClass
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create new Patron</h2>
+@using (@Html.BeginForm("Create", "Patron", FormMethod.Post)) 
+{
+    @Html.ValidationSummary(false)
+    <div style="float:left;width:350px;">
+        <div style="float:right;">
+            @Html.LabelFor(a => a.PatronNumber)
+            @Html.EditorFor(a => a.PatronNumber)
+        </div>
+        <div style="float:right;">
+            @Html.LabelFor(a => a.FirstName)
+            @Html.EditorFor(a => a.FirstName)
+        </div>
+        <div style="float:right;">
+            @Html.LabelFor(a => a.LastName)
+            @Html.EditorFor(a => a.LastName)
+        </div>
+        <div style="float:right;">
+            @Html.LabelFor(a => a.Street)
+            @Html.EditorFor(a => a.Street)
+        </div>
+        <div style="float:right;">
+            @Html.LabelFor(a => a.City)
+            @Html.EditorFor(a => a.City)
+        </div>
+        <div style="float:right;">
+            @Html.LabelFor(a => a.Province)
+            @Html.EditorFor(a => a.Province)
+        </div>
+        <div style="float:right;">
+            @Html.LabelFor(a => a.Postal_Code)
+            @Html.EditorFor(a => a.Postal_Code)
+        </div>
+        <div style="float:right;">
+            @Html.LabelFor(a => a.Email)
+            @Html.EditorFor(a => a.Email)
+        </div>
+        <div style="float:right;">
+            @Html.LabelFor(a => a.Phone)
+            @Html.EditorFor(a => a.Phone)
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+    <hr />
+    <div style="">
+            @Html.LabelFor(a => a.IsFaculty)
+            @Html.EditorFor(a => a.IsFaculty);
+        </div>
+        <div style="">
+            @Html.LabelFor(a => a.HasLRCMobile)
+            @Html.EditorFor(a => a.HasLRCMobile);
+        </div>
+    <hr />
+    <input type="submit" value="Create"/>
+}
+<br /><br />
+@Html.ActionLink("Back to Listing", "Index")

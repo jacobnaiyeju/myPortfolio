@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:8000/bootProfile/css/bootProfile.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="http://localhost:8000/bootProfile/js/bootProfile.js"></script>
+	<script type="text/javascript" src="http://localhost:8000/bootProfile/js/logic.js"></script>
+	<script type="text/javascript" src="http://localhost:8000/bootProfile/js/login.js"></script>
+<title>Contact Us</title>
+</head>
+
+<body>
+<div class="webmain">
+	<div class="bP_bootProfile_index bP_bootProfile_team">
+		<div class="bP_bootProfile_H1"><h1>bootProfile</h1></div>
+		<div class="bP_bootProfile_Login">
+		<input class="loginUser" type="text" placeholder="username"/>
+		<input class="loginPassword" type="password" placeholder="password"/>
+		<button class="loginBtn"> Sign-In </button>
+		</div>
+	</div>
+	<div class="bP_searchBar_holder bP_team_searchBar_holder">
+		<input type="search" class="search" name="search" placeholder="Enter Player/Team "/>
+		<button class="searchBtn" onclick="generateSearchURL();">Search</button>
+	</div>
+	<div class="stopFloat"></div>
+<div class="bP_contactUs">
+	<form action="./phpScripts/comment.php" method="post">
+	<div>
+	<h1> We Value your Comment </h1>	
+	</div>	
+	<hr />
+	<Label>Enter your Name</Label>
+	<div id="bP_cP_firstname_holder">
+			<input type="text" id="bP_cP_firstname" name="Bp_contact_firstname" placeholder="Enter Forename Here" />	
+	</div>
+	<div id="bP_cP_surname_holder">
+		<input type="text" id="bP_cP_surname" name="Bp_contact_surname" placeholder="Enter Surname Here"/>
+	</div>
+	<hr />
+	<div id="bP_cP_messageType_holder">
+	<Label>Message Type</Label>
+	<ul>
+		<li><input type="radio" id="bP_cP_stat" name="bP_cP_messageType" value="IncorrectInfo"/>	Report Incorrect Information </li>
+		<li><input type="radio" id="bP_cP_bug" name="bP_cP_messageType" value="Bug"/>	Report Bug </li>
+		<li><input type="radio" id="bP_cP_comment" name="bP_cP_messageType"value="General" />	General Comment </li>
+	</ul>
+	</div>
+	<hr />
+	<div id="bP_cP_comment_holder">
+	<Label>Enter your Comments below</Label><br />
+	<textarea id="bP_cP_comment" name="bP_cP_comment" >
+	</textarea>
+	</div>
+	<hr />
+	<div id="bP_cP_button_holder">
+	<button id="bP_cP_submit">Submit</button>
+	<button id="bP_cP_reset">Clear</button>
+	</div>
+	</form>
+	<hr />
+</div>
+<div class="bP_footer_holder">
+<div class="bP_navigation_holder">
+<a href="Index.html">Home</a>&nbsp;|&nbsp;<a href="about.html">About</a>&nbsp;|&nbsp;<a href="contactus.html">Contact-Us</a>
+</div>
+</div>
+</div>
+</body>
+
+</html>

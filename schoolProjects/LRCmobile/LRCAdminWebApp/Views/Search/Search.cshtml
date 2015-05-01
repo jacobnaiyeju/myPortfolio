@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+<div style="padding:30px">
+    <div class="col-lg-6">
+        <h2>LRC Mobile</h2>
+        @using (@Html.BeginForm("Index", "Search", FormMethod.Post))
+        {
+            <input type="search" id="Search" name="Search" value="Enter Search here" size="60" />
+            <input type="submit" value="Search" />
+            <br /><br />
+            <input type="radio" id="Book" name="category" value="Book" checked="checked" />
+            <label for="Book">by Book</label><br />
+            <input type="radio" id="Periodical" name="category" value="Periodical" />
+            <label for="Periodical">by Periodical</label><br />
+            <input type="radio" id="Media" name="category" value="Media" />
+            <label for="Media">by Media</label><br />
+            <input type="radio" id="AVEquipment" name="category" value="AVEquipment" />
+            <label for="AVEquipment">by AVEquipment</label><br />
+        }
+    </div>
+    <div class="col-lg-6" style="border-left-style:solid;border-left-color:red">
+        <h2>Administrative functions</h2>
+        <br /><br />
+        <ul>
+            <li>@Html.ActionLink("Manage Books", "Index", "Book")</li>
+            <li>@Html.ActionLink("Manage Periodicals", "Index", "Periodical")
+            <li>@Html.ActionLink("Manage Media", "Index", "Media")</li>
+            <li>@Html.ActionLink("Manage AVEquipment", "Index", "AVEqiupment")</li>
+            <li>@Html.ActionLink("Manage Patrons", "Index", "Patron")</li>
+        </ul>
+
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+
+

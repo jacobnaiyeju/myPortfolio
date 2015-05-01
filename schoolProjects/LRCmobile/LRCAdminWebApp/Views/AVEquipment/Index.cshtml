@@ -1,0 +1,62 @@
+﻿@model IEnumerable<LRCAdminWebApp.LRCMobileServiceReference.AVEquipmentClass>
+@{
+    ViewBag.Title = "AV Equipments";
+}
+
+<h2>AV Equipments</h2>
+<style>
+    table,
+    th,
+    td {
+        border: 2px solid black;
+    }
+    th {
+        background-color: red;
+    }
+
+    td {
+        background-color: yellow;
+    }
+</style>
+@Html.ActionLink("Create new AVEquipment", "Create","AVEquipment")
+
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.AccessionNumber)</th>
+        <th>@Html.DisplayNameFor(model => model.AssetNumber)</th>
+        <th>@Html.DisplayNameFor(model => model.Status)</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.AccessionNumber)</td>
+            <td>@Html.DisplayFor(model => item.AssetNumber)</td>
+            <td>@Html.DisplayFor(model => item.Status)</td>
+            <td>
+                @Html.ActionLink("Details", "Details","AVEquipment",
+                new { id = item.AccessionNumber },null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit","AVEquipment",
+       new { id = item.AccessionNumber },null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+            </td>
+            <td>
+                @Html.ActionLink("view Holds", "viewHolds", "Transactions",
+                new { id = item.AccessionNumber }, null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+            </td>
+            <td>
+                @Html.ActionLink("Hold Item", "placeHold", "Transactions",
+                new { id = item.AccessionNumber }, null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+            </td>
+            <td>
+                @if (item.Status == "A")
+                {
+                    @Html.ActionLink("Loan Item", "Create", "Transactions",
+                    new { id = item.AccessionNumber }, null) ;
+                }
+            </td>
+        </tr>
+        
+    }
+</table>
+

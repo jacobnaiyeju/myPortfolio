@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta content="en-us" http-equiv="Content-Language" />
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="http://localhost:8000/bootProfile/css/bootProfile.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="http://localhost:8000/bootProfile/js/bootProfile.js"></script>
+	<script type="text/javascript" src="http://localhost:8000/bootProfile/js/logic.js"></script>
+	<script type="text/javascript" src="http://localhost:8000/bootProfile/js/login.js"></script>
+</head>
+<body>
+	<div class="webmain">
+	<div class="bP_bootProfile_index">
+		<div class="bP_bootProfile_H1"><h1>bootProfile</h1></div>
+		<div class="bP_bootProfile_Login">
+		<input class="loginUser" type="text" placeholder="username"/>
+		<input class="loginPassword" type="password" placeholder="password"/>
+		<button class="loginBtn"> Sign-In </button>
+		</div>
+	</div>
+	<div class="bP_searchBar_holder">
+	<hr/>
+		<input type="search" class="search" name="search" placeholder="Enter Player/Team "/>
+		<button class="searchBtn" onclick="generateSearchURL();">Search</button>
+	</div>
+	<hr />
+	<div id="bP_leagueContent">
+	</div>
+	<div style="clear:both;padding:2em 0;" id="bP_leagueContent_backButton_holder">
+	</div>
+	<hr />
+	</div>
+	<div class="webmain">
+	<div class="bP_footer_holder">
+	<div class="bP_navigation_holder">
+	<a href="Index.html">Home</a>&nbsp;|&nbsp;<a href="about.html">About</a>&nbsp;|&nbsp;<a href="contactus.html">Contact-Us</a>
+	</div>
+	</div>
+	</div>
+</body>
+</html>

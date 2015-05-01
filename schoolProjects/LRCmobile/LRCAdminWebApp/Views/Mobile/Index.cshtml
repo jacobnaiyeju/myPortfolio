@@ -1,0 +1,168 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var addresspath = "http://192.168.2.1/LRCMobileService/";
+}
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="@Url.Content("http://localhost:61684/Scripts/jquery-1.10.2.js")"></script>
+    <script src="@Url.Content("http://localhost:61684/Content/custom/jquery.mobile-1.1.1.js")"></script>
+    <script src="@Url.Content("http://localhost:61684/Content/custom/mobile.js")"></script>
+</asp:Content>
+
+
+
+@if ((int)ViewData["total"] > -1)
+{
+    <div style="float: left;width:500px">
+        <div>
+            <h2>Mobile Icon-Content Manager</h2><br /><br />
+            @using (Html.BeginForm())
+            {
+                <label for="numAlready">Current Icon-Content Number</label>
+                <input type="number" id="numAlready" name="numAlready" value="@ViewBag.sortOrderMax" disabled="disabled" /><br />
+                <label for="numIcons">Add more</label>
+                <input type="number" id="numIcons" name="numIcons" min="0" />
+                <input type="submit" id="btnNumber" value="ADD" />
+                <br /><br />
+            }
+
+        </div>
+
+        <div style="border:3px solid black;padding:10px;width:320px;height:400px;overflow-y:auto">
+            <div>
+                <h3>Tap Icon to select Image and to ascribe text to it</h3>
+                <br /><br /><br />
+            </div>
+            <div>
+                <div id="mobileIcons">
+                    @if (ViewBag.result3 != -1)
+                    {
+                        var store = ViewBag.result as List<LRCAdminWebApp.LRCMobileServiceReference.MobileIconContent>;
+                        int h=0;
+                        for (var item = 1; item <= ViewBag.sortOrderMax; item++)
+                        {
+                            //if (item == ViewBag.result3) 
+                            //{
+                               
+                            //}
+                            if (store[h].placeInt == (item))
+                            {
+                                var image = addresspath+"Icon" + (store[h].IconName);
+                                <button type="submit" id="@(item)" style="background-color: black;width:280px; height: 70px" onclick="process(@(item))"><img src="@image" alt="cannot load image" width="70" height="70" /></button>
+                                h++;
+                            }
+                            else 
+                            {
+                                <button type="submit" id="@(item)" style="background-color: black;width:280px; height: 70px" onclick="process(@(item))"></button>
+                            }
+                        }
+                    }
+
+                    @*var k = 0;
+                        while (Request.Cookies["placeNumber" + (k + 1)] != null)
+                        {
+                            var image = "/Icons" + (Request.Cookies["imagePath" + (k + 1)].Value);
+                            <button type="submit" id="@(k + 1)" style="background-color: black;width:280px; height: 70px" onclick="process(@(k + 1))"><img src="@image" alt="cannot load image" width="70" height="70" /></button>
+                            k++;
+                        }*@
+
+
+                    @*@for (var i = (ViewBag.result3 + 1); i <= (int)ViewData["total1"]; i++)
+                    {
+                        var x = "btn" + i;
+                        var p = "Icon" + i;
+                        <input type="submit" id="@x" value="@p" style="background-color:black;width:350px;height:50px" onclick="process(@i)" />
+                    }*@
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="formUpload" style="float:left">
+    </div>
+
+    <div style="float: right; ">
+        @*<div style="padding-top: 20px; border: outset; margin: 30px; background-color: black">
+            @Html.ActionLink("Commit Changes", "upload", "Mobile")
+        </div>*@
+        <div style="padding-top: 20px; border: outset; margin: 30px; background-color: black">
+            @Html.ActionLink("See Commited ", "deleteIconContent", "Mobile")
+        </div>
+    </div>
+    <div style="clear:both"> </div>
+
+}
+else
+{
+    <div style="float: left;width:500px">
+        <div>
+            <h2>Mobile Icon-Content Manager</h2><br /><br />
+            @using (Html.BeginForm())
+            {
+                <label for="numAlready">Current Icon-Content Number</label>
+                <input type="number" id="numAlready" name="numAlready" value="@ViewBag.sortOrderMax" disabled="disabled" /><br />
+                <label for="numIcons">Add more</label>
+                <input type="number" id="numIcons" name="numIcons" min="0" />
+                <input type="submit" id="btnNumber" value="ADD" />
+                <br /><br />
+            }
+
+        </div>
+        <div style="border:3px solid black;padding:10px;width:350px;height:400px;overflow-y:auto">
+            <div>
+                <h3>Tap Icon to select Image and to ascribe text to it</h3>
+                <br /><br /><br />
+            </div>
+            <div>
+                <div id="mobileIcons">
+                    @if (ViewBag.result3 != -1)
+                    {
+                        var store = ViewBag.result as List<LRCAdminWebApp.LRCMobileServiceReference.MobileIconContent>;
+                        int h=0;
+                        for (var item = 1; item <= ViewBag.sortOrderMax; item++)
+                        {
+                            //if (item == ViewBag.result3) 
+                            //{
+                               
+                            //}
+                            if (store[h].placeInt == (item))
+                            {
+                                var image = addresspath+"Icon" + (store[h].IconName);
+                                <button type="submit" id="@(item)" style="background-color: black;width:280px; height: 70px" onclick="process(@(item))"><img src="@image" alt="cannot load image" width="70" height="70" /></button>
+                                h++;
+                            }
+                            else 
+                            {
+                                <button type="submit" id="@(item)" style="background-color: black;width:280px; height: 70px" onclick="process(@(item))"></button>
+                            }
+                        }
+                    }
+                    @*@{
+                                        var k = 0;
+                                        while (Request.Cookies["placeNumber" + (k + 1)] != null)
+                                        {
+                                            var image = "/Icons" + (Request.Cookies["imagePath" + (k + 1)].Value);
+                                            <button type="submit" id="@(k + 1)" style="background-color: black;width:280px; height: 70px" onclick="process(@(k + 1))"><img src="@image" alt="cannot load image" width="70" height="70" /></button>
+                                            k++;
+                                        }
+                        }*@
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="formUpload" style="float:left">
+    </div>
+    <div style="float: right; ">
+        @*<div style="padding-top: 20px; border: outset; margin: 30px; background-color: black">
+            @Html.ActionLink("Commit Changes", "upload", "Mobile")
+        </div>*@
+        <div style="padding-top: 20px; border: outset; margin: 30px; background-color: black">
+            @Html.ActionLink("See Commited ", "deleteIconContent", "Mobile")
+        </div>
+    </div>
+    <div style="clear:both"> </div>
+
+}
+
+

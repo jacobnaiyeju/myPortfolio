@@ -1,0 +1,36 @@
+﻿@model LRCAdminWebApp.LRCMobileServiceReference.PatronClass
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<table>
+    <tr>
+        <th>PatronId&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>PatronNumber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>FirstName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>LastName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</th>
+        <th>Street&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</th>
+        <th>City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;</th>
+        <th>Province&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        <th>Postal Code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(model => model.PatronId)</td>
+        <td>@Html.DisplayFor(model => model.PatronNumber)</td>
+        <td>@Html.DisplayFor(model => model.FirstName)</td>
+        <td>@Html.DisplayFor(model => model.LastName)</td>
+        <td>@Html.DisplayFor(model => model.Email)</td>&nbsp;&nbsp;&nbsp;
+        <td>@Html.DisplayFor(model => model.Street)</td>&nbsp;&nbsp;&nbsp;
+        <td>@Html.DisplayFor(model => model.City)</td>&nbsp;&nbsp;&nbsp;
+        <td>@Html.DisplayFor(model => model.Province)</td>
+        <td>@Html.DisplayFor(model => model.Postal_Code)</td>
+    </tr>
+    <tfoot>
+        <tr><td>@Html.ActionLink("Back to Listing","Index")</td></tr>
+    </tfoot>
+</table>
+
+
+

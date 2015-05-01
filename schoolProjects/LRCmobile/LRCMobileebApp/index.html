@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+
+	<!-- Author : Amandeep -->
+	<!-- Student Id: 6846901 -->
+
+
+	<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>LRC Mobile Application</title>
+		<link href="css/themes/default/jquery.mobile-1.1.1.css" rel="stylesheet" type="text/css" />
+		<link href="css/custom.css" rel="stylesheet" type="text/css" />
+
+		<!-- JavaScript HTML requirements -->
+		
+		<script src="js/jquery.js" type="text/javascript"></script>
+		<script src="js/jquery.mobile-1.1.1.min.js" type="text/javascript"></script>
+		<script src="js/global.js" type="text/javascript"></script>
+		<script src="js/mobile.js" type="text/javascript"></script>
+		<script src="js/utils.js" type="text/javascript"></script>
+		<script src="js/moment.min.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<!-- ********************************** Home ***************************** -->
+  <div data-role="page"  id="home" data-cache="false">
+      <header id="homeHeader" data-role="header" data-position="fixed">
+      	<h2>LRC Mobile Application</h2>
+      	<hr></hr>
+		<div style="float:right;">
+			<a data-role="button" href="#signInPage" data-theme="a" rel="external">Sign-In</a>
+		</div>
+		<div style="clear:both;"></div>
+      </header>
+      <section data-role="content" >
+	  <form id="addForm" name="addForm" data-ajax="false">
+	  	<fieldset  data-role="controlgroup" data-type="horizontal">
+	  		<Label for="searchBooks">Books</Label>
+	  		<input type="radio" name="search" id="searchBooks" value="Books" checked="checked">
+	  		<Label for="searchPeriodicals">Periodicals</Label>
+	  		<input type="radio" name="search" id="searchPeriodicals" value="Periodicals">
+	  	</fieldset>
+		<br />
+		<hr></hr> 
+         <input name="searchinput1" id="searchinput1" placeholder="" value="search for an item" type="search" onfocus="clearfield()">
+         <a data-role="button" data-theme="a" id="btnSearchStr" data-inline="true" rel="external">Search</a>
+      	 <br />
+      	 <hr></hr>   	 
+      </form> 
+      <div>
+      	<ul id="listForIcons" data-role="listview" data-inset="true"></ul>
+      </div>
+	 </section>
+      <div data-theme="a" data-role="footer" data-position="fixed">
+      	<a data-role="button" href="#contact">Contact Us</a>
+      	<a data-role="button" href="#help">View Articles</a>
+      	<hr></hr>
+          <h3>&copy;2014</h3>
+      </div>
+  </div>
+  
+  <!-- *******************************  Home Ends *********************************** -->
+  <!--********************************SignIn page**************************************-->
+  <div data-role="page" id="signInPage" data-cache="false">
+	<header  data-role="header" data-position="fixed">
+          <h2>LRC Mobile Application</h2>
+      		<hr></hr>
+			<div style="float:right;">
+				<a id="btnback" data-role="button" href="#home" data-theme="a" rel="external">back to Main Page</a>
+			</div>
+			<div style="clear:both;"></div>
+      </header>
+      <section data-role="content">
+      	<form>
+      		<Label for="signInUserName">Enter User Name</Label>
+      		<input type="text" id="signInUserName" name="signInUserName"/>
+      		<Label for="signInUserName">Password</Label>
+      		<input type="password" id="signInPassword" name="signInPassword"/>
+      		<a href="#home" data-theme="a" data-role="button" id="btnSignIn" name="btnSignIn" rel="external">Sign-In</a>
+      	</form>
+      </section>
+	  <footer data-theme="a" data-role="footer" data-position="fixed">
+	  	<a data-role="button" href="#contact">Contact Us</a>
+      	<a data-role="button" href="#help">View Articles</a>
+      	<hr></hr>
+          <h3>&copy;2014</h3>
+      </footer>
+</div>
+  <!--*****************************SignIn page End***********************************-->
+  <!-- *******************************  Content Ends *********************************** -->
+<div data-role="page" id="pageContent" data-cache="false">
+	<header id="pageContentHeader" data-role="header" data-position="fixed">
+          <h2>LRC Mobile Application</h2>
+      		<hr></hr>
+			<div id="pageContentNav" style="float:right;">
+				<a data-role="button" href="#home" data-theme="a" rel="external">back to Main Page</a>
+				<a data-role="button" href="#signInPage" data-theme="a" rel="external">Sign-In</a>
+			</div>
+			<div style="clear:both;"></div>
+      </header>
+      <section id="contentPages" data-role="content"></section>
+	  <footer data-theme="a" data-role="footer" data-position="fixed">
+	  	<div data-theme="a" data-role="footer" data-position="fixed">
+      	<a data-role="button" href="#contact">Contact Us</a>
+      	<a data-role="button" href="#help">View Articles</a>
+      	<hr></hr>
+          <h3>&copy;2014</h3>
+      </footer>
+</div>
+	  <!-- ******************************* Content Ends ******************************************-->
+
+<div data-role="page" id="pageSearch" data-cache="false" >
+	<header id="pageSearchHeader" data-role="header" data-position="fixed">
+          <h2>LRC Mobile Application</h2>
+      		<hr></hr>
+			<div id="pagesearchNav" style="float:right;">
+				<a data-role="button" href="#home" data-theme="a" rel="external" onclick=refreshPage()>back to Main Page</a>
+				<a data-role="button" href="#signInPage" data-theme="a" rel="external">Sign-In</a>
+			</div>
+			<div style="clear:both;"></div>
+      </header>
+      <section id="searchResults" data-role="content"></section>
+	  <footer data-theme="a" data-role="footer" data-position="fixed">
+	  	<a data-role="button" href="#contact">Contact Us</a>
+      	<a data-role="button" href="#help">View Articles</a>
+      	<hr></hr>
+          <h3>&copy;2014</h3>
+      </footer>
+</div> 
+<!--notifications page--> 
+<div data-role="page" id="notifications" data-cache="false">
+	<header id="notificationsHeader" data-role="header" data-position="fixed">
+      </header>
+      <section id="notificationResults" data-role="content"></section>
+	  <footer data-theme="a" data-role="footer" data-position="fixed">
+	  	<a data-role="button" href="#contact">Contact Us</a>
+      	<a data-role="button" href="#help">View Articles</a>
+      	<hr></hr>
+          <h3>&copy;2014</h3>
+      </footer>
+</div> 
+<!--end notifications page-->  
+<!--Account Details page--> 
+<div data-role="page" id="account" data-cache="false">
+	<header id="accountHeader" data-role="header" data-position="fixed">
+      </header>
+      <section id="accountsResults" data-role="content">
+      	<ul data-role="listview" data-theme="a" data-inset="true">
+      		<li data-theme="a" >
+      			<a data-role="button" data-theme="a" href="#holds" onclick = getHolds()>
+      				<h3>View Holds</h3>
+      			</a>
+      		</li>
+      		<li data-theme="a" >
+      			<a data-role="button" data-theme="a" href="#holds" onclick = getLoans()>
+      				<h3>View Loans</h3>
+      			</a>
+      		</li>
+      	</ul>
+      </section>
+	  <footer data-theme="a" data-role="footer" data-position="fixed">
+	  	<a data-role="button" href="#contact">Contact Us</a>
+      	<a data-role="button" href="#help">View Articles</a>
+      	<hr></hr>
+          <h3>&copy;2014</h3>
+      </footer>
+</div> 
+<!--end Account Details page-->
+<!--view holds Page-->
+<div data-role="page" id="holds" data-cache="false">
+	<header id="holdsHeader" data-role="header" data-position="fixed">
+      </header>
+      <section id="holdsResults" data-role="content"></section>
+	  <footer data-theme="a" data-role="footer" data-position="fixed">
+	  	<a data-role="button" href="#contact">Contact Us</a>
+      	<a data-role="button" href="#help">View Articles</a>
+      	<hr></hr>
+          <h3>&copy;2014</h3>
+      </footer>
+</div> 
+
+<!--------------------->
+<!--------holddetails-------->
+<div data-role="page" id="holddetails" data-cache="false">
+	<header id="holddetailsHeader" data-role="header" data-position="fixed">
+      </header>
+      <section id="holddetailsResults" data-role="content"></section>
+	  <footer data-theme="a" data-role="footer" data-position="fixed">
+	  	<a data-role="button" href="#contact">Contact Us</a>
+      	<a data-role="button" href="#help">View Articles</a>
+      	<hr></hr>
+          <h3>&copy;2014</h3>
+      </footer>
+</div> 
+<!--------end holddetails-------->
+
+<div data-role="page" id="contact" data-cache="false">
+	<header id="contactHeader" data-role="header" data-position="fixed">
+		<h2>LRC Mobile Application</h2>
+      	<hr></hr>
+		<div style="float:right;">
+			<a data-role="button" href="#signInPage" data-theme="a" rel="external">Sign-In</a>
+		</div>
+		<div style="clear:both;"></div>
+      </header>
+      <section id="" data-role="content">
+      	<div id="contact_buttons"><a href="tel:5197845220"  data-role="button" data-icon="tel"> Call: Library</a></div>	
+        <div id="contact_buttons"><a href="mailto:lrcinfo@conestogac.on.ca" data-role="button" data-icon="tel">Email Us: lrcinfo@conestogac.on.ca</a></div>	
+        <h3>Library Address:</h3>
+        <a href="" rel="external" data-role="button"><span>299 Doon Valley Drive Kitchener, Ontario N2G 4M4</span><br /><span>Fax: 519 748-3538 </span><br /><span> B Wing Room 2B18</span></a>
+      </section>
+	  <footer data-theme="a" data-role="footer" data-position="fixed">
+	  	<a data-role="button" href="#contact">Contact Us</a>
+      	<a data-role="button" href="#help">View Articles</a>
+      	<a data-role="button" href="#home">Go To Home</a>
+      	<hr></hr>
+          <h3>&copy;2014</h3>
+      </footer>
+</div> 
+<div data-role="page" id="help" data-cache="false">
+	<header id="articlesHeader" data-role="header" data-position="fixed">
+		<h2>LRC Mobile Application</h2>
+      	<hr></hr>
+		<div style="float:right;">
+			<a data-role="button" href="#signInPage" data-theme="a" rel="external">Sign-In</a>
+		</div>
+		<div style="clear:both;"></div>
+      </header>
+      <section id="" data-role="content">
+      	<dl>
+  			<dt><a href="http://search.proquest.com/index?selectids=abitrade">ABI/INFORM Trade & Industry</a></dt>
+  			<dd>Business journals with a trade and industry focus. Latest industry news, product & marketing trends.</dd>
+  
+  <dt><a href="http://www.conestogac.on.ca/lrc/resources/bridges.jsp">Bridges</a></dt>
+  <dd><b>Use your Conestoga Network Login and Password to access the secured login details for this resource.</b>Explore practical information about careers and the educational pathways necessary to achieve career goals.    </dd>
+  
+  <dt><a href="http://ic.galegroup.com/ic/cic/?p=CIC&u=conestoga">Canada in Context</a></dt>
+  <dd>Research a broad range of Canadian topics, people, places and events. Includes full-text magazines, academic journals, news articles, primary source documents, images, videos, audio files, and links to vetted websites.</dd>
+  
+  <dt><a href="http://go.galegroup.com/ps/start.do?p=PPDS&u=conestoga&authCount=1">Diversity Studies Collection</a></dt>
+  <dd>150 journals in a collection that explores cultural differences, contributions and influences in our global community.</dd>
+  
+   <dt><a href="http://ovidsp.tx.ovid.com/sp-3.12.0b/ovidweb.cgi?QS2=434f4e1a73d37e8c5a069e886e3737f2ba141306cb5f5973e211b70395a9d9eefdc3bbd7f9294250ec2610adb0b1debe8c347bcd857362a9bccfc60814d01f675a5a0df1f909135aceea47284efabceffc862ae632462b60922bb8cc21fc85e724ab01735fbe83651fb69f62fe87eef25be2d61d99d24bb96942e8f066f9905439ad4a35dea0652045567d7a55b5a91d4f100eaf3463ddb8fd719dbde49dea4c88c612e8ce57720eed7d15bd726a350852b56560535def300e3f1400530ecb0a34f602e320a9cd91f269471e035b85f535058654ea8cfda7de5101cb517d6cc59f4e416e08164f8aec3f95fbbb75193aed8d805deecd64de417e22e50895a953552835908058a6b3">EBM Reviews</a></dt>
+  <dd>Search evidence-based nursing resources from the Cochrane Database of Systematic Reviews, the Database of Abstracts and Reviews of Effects (DARE), and the American College of Physicians (ACP) Journal Club.</dd>
+  
+</dl>
+      </section>
+	  <footer data-theme="a" data-role="footer" data-position="fixed">
+	  	<a data-role="button" href="#contact">Contact Us</a>
+      	<a data-role="button" href="#help">View Articles</a>
+      	<a data-role="button" href="#home">Go To Home</a>
+      	<hr></hr>
+          <h3>&copy;2014</h3>
+      </footer>
+</div> 
+</body>
+	</html>

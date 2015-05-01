@@ -1,0 +1,43 @@
+﻿@model IEnumerable<LRCAdminWebApp.LRCMobileServiceReference.PatronClass>
+@{
+    ViewBag.Title = "Patrons";
+}
+
+<h2>Patrons</h2>
+<style>
+    table,
+    th,
+    td {
+        border: 2px solid black;
+    }
+    th {
+        background-color: red;
+    }
+
+    td {
+        background-color: yellow;
+    }
+</style>
+@Html.ActionLink("Create new Patron","Create","Patron")
+
+<table>
+    <tr>
+    <th>PatronNumber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>FirstName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>LastName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model=>item.PatronNumber)</td>
+            <td>@Html.DisplayFor(model=>item.FirstName)</td>
+            <td>@Html.DisplayFor(model=>item.LastName)</td>
+            <td>@Html.DisplayFor(model=>item.Email)</td>
+            <td>@Html.ActionLink("Details", "Details","Patron", new { id = item.PatronId },null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</td>
+            <td>@Html.ActionLink("Edit", "Edit","Patron", new { id = item.PatronId },null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</td>
+            <td>@Html.ActionLink("View Loans", "Index", "Transactions", new { patronid = item.PatronId }, null)&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</td>
+            <td>@Html.ActionLink("View Holds", "getPatronHolds", "Transactions", new { patronid = item.PatronId }, null)&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</td>
+        </tr>
+    }
+</table>

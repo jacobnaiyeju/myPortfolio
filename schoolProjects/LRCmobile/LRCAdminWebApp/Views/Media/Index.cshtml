@@ -1,0 +1,70 @@
+﻿@model IEnumerable<LRCAdminWebApp.LRCMobileServiceReference.MediaClass>
+
+@{
+    ViewBag.Title = "Media";
+}
+
+<h2>Media</h2>
+<style>
+    table,
+    th,
+    td {
+        border: 2px solid black;
+    }
+    th {
+        background-color: red;
+    }
+
+    td {
+        background-color: yellow;
+    }
+</style>
+@Html.ActionLink("Create new Media", "Create","Media")
+
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.SKU)</th>
+        <th>@Html.DisplayNameFor(model => model.Title)</th>
+        <th>@Html.DisplayNameFor(model => model.Status)</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.SKU)</td>
+            <td>@Html.DisplayFor(model => item.Title)</td>
+            <td>@Html.DisplayFor(model => item.Status)</td>
+            <td>
+                @Html.ActionLink("Details", "Details","Media",
+                new { id = item.AccessionNumber },null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit","Media",
+       new { id = item.AccessionNumber },null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+    </td>
+            <td>
+                @Html.ActionLink("view Holds", "viewHolds", "Transactions",
+                new { id = item.AccessionNumber }, null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+            </td>
+            <td>
+                @Html.ActionLink("Hold Item", "placeHold", "Transactions",
+                new { id = item.AccessionNumber }, null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+            </td>
+            <td>
+                @if (item.Status == "A")
+                {
+                    @Html.ActionLink("Loan Item", "Create", "Transactions",
+                    new { id = item.AccessionNumber }, null) ;
+                }
+                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+            </td>
+            <td>
+                @if (item.Status != "R")
+                {
+                    @Html.ActionLink("Reserve Item", "createReserve", "Transactions",
+                    new { id = item.AccessionNumber }, null) ;
+                }
+            </td>
+</tr>
+    }
+</table>
+

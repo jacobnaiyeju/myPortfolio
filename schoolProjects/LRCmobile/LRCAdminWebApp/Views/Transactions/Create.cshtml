@@ -1,0 +1,23 @@
+﻿@model LRCAdminWebApp.LRCMobileServiceReference.BorrowingClass
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using(@Html.BeginForm())
+{
+    @Html.HiddenFor(a=>a.ItemAccessionNumber)
+    @Html.LabelFor(a=>a.PatronPatronId)
+    @Html.EditorFor(a=>a.PatronPatronId)
+    <br /><br />
+    @Html.LabelFor(a=>a.Date)
+    <input type="datetime" name="Date" id="Date" value="@DateTime.Now" readonly/>
+    <br /><br />
+    @Html.LabelFor(a=>a.DueDate)
+    <input type="datetime" name="DueDate" id="DueDate" value="@DateTime.Now.AddDays(3)"
+           min="@DateTime.Now.AddDays(3)" max="@DateTime.Now.AddDays(21)" />
+    
+    <input type="submit" value="Borrow"/>
+}
+@Html.ActionLink("Go back to Listing", "Index", "Home")

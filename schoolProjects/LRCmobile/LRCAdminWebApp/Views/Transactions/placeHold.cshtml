@@ -1,0 +1,20 @@
+﻿@model LRCAdminWebApp.LRCMobileServiceReference.HoldClass
+@{
+    ViewBag.Title = "placeHold";
+}
+
+<h2>placeHold</h2>
+
+@using (@Html.BeginForm()) 
+{
+    @Html.HiddenFor(a=>a.ItemAccessionNumber)
+    @Html.LabelFor(a=>a.PatronPatronId)
+    @Html.EditorFor(a=>a.PatronPatronId)
+    @Html.HiddenFor(a=>a.Date)
+    @Html.LabelFor(a=>a.Date)
+    @Html.DisplayFor(a=>a.Date)
+    
+    <input type="submit" value="Place Hold"/>
+}
+
+@Html.ActionLink("Go back to Listing", "Index", "Home")

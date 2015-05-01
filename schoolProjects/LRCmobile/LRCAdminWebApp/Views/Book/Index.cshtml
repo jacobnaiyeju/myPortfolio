@@ -1,0 +1,70 @@
+﻿@model IEnumerable<LRCAdminWebApp.LRCMobileServiceReference.BookClass>
+
+@{
+    ViewBag.Title = "Books";
+}
+
+<h2>Books</h2>
+<style>
+    table,
+    th,
+    td {
+        border: 2px solid black;
+    }
+    th {
+        background-color: red;
+    }
+
+    td {
+        background-color: yellow;
+    }
+</style>
+@Html.ActionLink("Create new Book","Create","Book")
+
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ISBN)</th>
+        <th>@Html.DisplayNameFor(model => model.Author)</th>
+        <th>@Html.DisplayNameFor(model => model.Status)</th>
+        <th>@Html.DisplayNameFor(model => model.Title)</th>
+        <th>@Html.DisplayNameFor(model => model.Edition)</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.ISBN)</td>
+            <td>@Html.DisplayFor(model => item.Author)</td>
+            <td>@Html.DisplayFor(model => item.Status)</td>
+            <td>@Html.DisplayFor(model => item.Title)</td>
+            <td>@Html.DisplayFor(model => item.Edition)</td>
+            <td>@Html.ActionLink("Details", "Details","Book" ,
+                new { id = item.AccessionNumber },null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</td>
+            <td>@Html.ActionLink("Edit", "Edit","Book",
+                new { id = item.AccessionNumber},null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</td>
+            <td>
+                @Html.ActionLink("view Holds", "viewHolds", "Transactions",
+                new { id = item.AccessionNumber }, null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+            </td>
+            <td>
+                @Html.ActionLink("Hold Item", "placeHold", "Transactions",
+                new { id = item.AccessionNumber }, null) &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+            </td>
+            <td>
+                @if (item.Status == "A") 
+                {
+                    @Html.ActionLink("Loan Item", "Create","Transactions",
+                    new { id = item.AccessionNumber },null) ;
+                } 
+                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+            </td>
+            <td>
+                @if (item.Status!="R")
+                {
+                    @Html.ActionLink("Reserve Item", "createReserve", "Transactions",
+                    new { id = item.AccessionNumber }, null) ;
+                }
+            </td>
+        </tr>
+    }
+</table>
+

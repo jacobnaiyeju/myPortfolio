@@ -1,0 +1,43 @@
+﻿@model IEnumerable<LRCAdminWebApp.LRCMobileServiceReference.HoldClass>
+@{
+    ViewBag.Title = "viewHolds";
+}
+
+<style>
+    table,
+    th,
+    td {
+        border: 2px solid black;
+    }
+
+    th {
+        background-color: red;
+    }
+
+    td {
+        background-color: yellow;
+    }
+</style>
+<h2>Holds On Item</h2>
+
+<table>
+    <tr>
+        <th>Patron Id</th>
+        <th>Name</th>
+        <th>Date of Hold</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(a=>item.PatronPatronId)</td>
+            @{
+        var start = new LRCAdminWebApp.LRCMobileServiceReference.LRCMobileServiceClient().findPatronAsync(item.PatronPatronId);
+        var result = start.Result.FirstName +" "+ start.Result.LastName;
+        <td>@result</td>
+            }
+            <td>@Html.DisplayFor(a => item.Date)</td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Go back to Listing", "Index", "Home")
+
